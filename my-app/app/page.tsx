@@ -9,10 +9,11 @@ export default function Home() {
         <div className="flex items-center gap-12">
           <a className="text-2xl font-serif italic text-[#565f4c] dark:text-[#848d78]" href="#">Lumyra Manufacture</a>
           <div className="hidden md:flex gap-8 items-center">
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Flowers</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Candles</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Decor</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Our Story</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Blumen</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Kerzen</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Düfte</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Deko</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Unsere Story</a>
           </div>
         </div>
         <div className="flex items-center gap-6">
@@ -33,11 +34,11 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 z-10">
             <span className="font-sans text-sm tracking-[0.2em] uppercase text-secondary mb-4 block">Est. 2025 — Lumyra Manufacture</span>
-            <h1 className="text-5xl md:text-7xl font-serif text-on-surface leading-tight mb-8">Curated items for the <span className="italic">slow living</span> ritual.</h1>
-            <p className="text-on-surface-variant max-w-md text-lg mb-10 leading-relaxed">Handcrafted dried floral arrangements and botanical soy candles designed to bring organic warmth into your home sanctuary.</p>
+            <h1 className="text-5xl md:text-7xl font-serif text-on-surface leading-tight mb-8">Produkte für dein <span className="italic underline underline-offset-8 decoration-secondary" >Slow Living</span> Ritual.</h1>
+            <p className="text-on-surface-variant max-w-md text-lg mb-10 leading-relaxed">Handgefertigte Trockenblumen-Arrangements, pflanzliche Kerzen, Tabletts und feine Düfte, kreiert, um deinem Zuhause eine organische Wärme zu verleihen.</p>
             <div className="flex gap-4">
               <button className="bg-primary text-on-primary px-8 py-4 rounded-md font-medium hover:scale-[1.02] transition-transform flex items-center gap-2">
-                Explore Collection <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                Entdecken <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </button>
             </div>
           </div>
@@ -45,7 +46,7 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-sm">
-                  <img className="w-full h-full object-cover" data-alt="Close-up of a rustic bouquet of dried eucalyptus, lavender, and pampas grass in a ceramic vase with soft morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKiOlyuXazImekKGEwmobCc_BLndEPzd2aSb1kNluGCAzhRry73rS6jfkLuXznw3Ie28LqYf7TCyG6BM8K2RWdYbiyk3EFCA7FCVLajBAxmX9sfzB5cyP9n1mq2tckxlr6RgAA6M34IwhhP1InKsp5Ctw3RbrAcY9wQJaTBfQwcw8F4V4fCxlH_go96byYQptbE7tgXR5SdJlb8gN374WqEhP9iLr8eXY-_TCtdA9ljqyXOWbyA2Bavnhb4fiqXC8nz3Q5YYEfvXcC"/>
+                  <img className="w-full h-full object-cover" data-alt="Close-up of a rustic bouquet of dried eucalyptus, lavender, and pampas grass in a ceramic vase with soft morning light." src="https://i.etsystatic.com/63042411/r/il/fabeda/7686102272/il_1588xN.7686102272_pndu.jpg"/>
                 </div>
                 <div className="aspect-square rounded-xl overflow-hidden bg-surface-container-low translate-x-12">
                   <img className="w-full h-full object-cover" data-alt="Handmade soy candle in a minimal amber glass jar with a wooden wick, sitting on a weathered wooden surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsyXpFgHNx5f0v_jeVDtRTgV9OWyLfbS0EMjltDC5gv9o2mGM7crn-SMhicb7OFZw4_dNtyRcsXu_ik7yQkkaIzuE-LUnXN1L62fJXfwaDLZZ2iBFrCV42leyyoRzjl7GUbE3zvy4hrldYSFSitn6yDhtdS5GQZPPU4jU5x6BB0UzukoLwseNNPsGJvgqo9uhkeLh0fLSEKtDt405WWSxKSyRUJ7AMPyK_NRZDsfzRrCPEnhv2SL5iP-QquhCM8a3XU6DOh86Bh1eC"/>
@@ -53,7 +54,7 @@ export default function Home() {
               </div>
               <div className="pt-12">
                 <div className="aspect-[3/4] rounded-xl overflow-hidden bg-surface-container-high shadow-lg">
-                  <img className="w-full h-full object-cover" data-alt="Detail of artisanal flower drying process in a sunlit wooden workshop with bundles hanging from rafters." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPSXoXRwy9t2FvkNmvl9hMaupXO_8S5AR635UP7VNml2R-ornDa3Xw3RKZG2V8bK9nAhKhjTW0a6DDrbyDJT9LGrlj7JAnWLe_wSZSmL4y9IdfXXlKuvnhZIu4PNl-djUalrW8nK7a6qHO5MohkGXD_u7ErTuHud0dGNhkk9h5S_0CTncnfp5en5P5dmIH6AEj1C4-lnclZOiZYhNfOkZl-OcPdUW3eBLil3Nx5mTD9Djvs9YBDlAXrVmNmKEpf--7J2pERH4ZLBtx"/>
+                  <img className="w-full h-full object-cover" data-alt="Detail of artisanal flower drying process in a sunlit wooden workshop with bundles hanging from rafters." src="https://i.etsystatic.com/63042411/r/il/b0c1b6/7631476449/il_1588xN.7631476449_3lwp.jpg"/>
                 </div>
               </div>
             </div>

@@ -17,8 +17,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Haus der Handarbeit | The Artisanal Atelier",
-  description: "Curated items for the slow living ritual.",
+  title: "Lumyra Manufacture",
+  description: "Handgefertigte Unikate für dein Slow Living Ritual.",
 };
 
 export default function RootLayout({
