@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
-import { Noto_Serif, Plus_Jakarta_Sans } from "next/font/google";
+import { Noto_Serif, Plus_Jakarta_Sans, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 // Optimize Google Fonts
 const notoSerif = Noto_Serif({ 
@@ -27,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`light ${notoSerif.variable} ${plusJakartaSans.variable}`}>
+    <html lang="en" className={cn("light", notoSerif.variable, plusJakartaSans.variable, "font-sans", geist.variable)}>
       <head>
         {/* Material Symbols Outlined Icon Font */}
         <link 

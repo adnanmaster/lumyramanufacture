@@ -1,6 +1,14 @@
-import Image from "next/image";
+"use client";
+
+import { SplitText } from '@/components/SplitText';
+import { AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+
 
 export default function Home() {
+
+  const [visible, setVisible] = useState(true);
   return (
   <>
     {/* TopNavBar */}
@@ -34,6 +42,21 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 z-10">
             <span className="font-sans text-sm tracking-[0.2em] uppercase text-secondary mb-4 block">Est. 2025 — Lumyra Manufacture</span>
+            <AnimatePresence mode="wait">
+              {visible && (
+                <motion.div exit={{ opacity: 0 }}>
+                  <SplitText
+                    className="italic underline underline-offset-8 decoration-secondary text-lg md:text-2xl font-sans text-secondary mb-4"
+                    delay={50}
+                    animationFrom={{ opacity: 0, y: 40 }}
+                    animationTo={{ opacity: 1, y: 0 }}
+                    easing = "easeOut"
+                  >
+                    Hello, you!
+                  </SplitText>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <h1 className="text-5xl md:text-7xl font-serif text-on-surface leading-tight mb-8">Produkte für dein <span className="italic underline underline-offset-8 decoration-secondary" >Slow Living</span> Ritual.</h1>
             <p className="text-on-surface-variant max-w-md text-lg mb-10 leading-relaxed">Handgefertigte Trockenblumen-Arrangements, pflanzliche Kerzen, Tabletts und feine Düfte, kreiert, um deinem Zuhause eine organische Wärme zu verleihen.</p>
             <div className="flex gap-4">

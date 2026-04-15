@@ -10,6 +10,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // --- ADDED THESE TO FIX THE CSS ERRORS ---
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        // -----------------------------------------
+
         "primary-fixed-dim": "#c1cab3",
         "on-secondary": "#ffffff",
         "surface": "#fbf9f4",
@@ -20,7 +28,7 @@ const config: Config = {
         "tertiary-container": "#827261",
         "secondary-container": "#fecdae",
         "tertiary-fixed": "#f4dfcb",
-        "background": "#fbf9f4",
+        // background: "#fbf9f4", // Commented out to use the variable above
         "secondary": "#7a573e",
         "secondary-fixed-dim": "#ecbd9e",
         "on-tertiary-fixed-variant": "#524436",
