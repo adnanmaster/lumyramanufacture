@@ -15,13 +15,13 @@ export default function Home() {
     <nav className="fixed top-0 w-full z-50 bg-[#fbf9f4]/80 dark:bg-[#1b1c19]/80 backdrop-blur-md">
       <div className="flex justify-between items-center px-8 py-6 max-w-screen-2xl mx-auto">
         <div className="flex items-center gap-12">
-          <a className="text-2xl font-serif italic text-[#565f4c] dark:text-[#848d78]" href="#">Lumyra Manufacture</a>
+          <a className="text-2xl font-serif italic text-[#565f4c] dark:text-[#848d78]" href="..">Lumyra Manufacture</a>
           <div className="hidden md:flex gap-8 items-center">
             <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Blumen</a>
             <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Kerzen</a>
             <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Düfte</a>
             <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Deko</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Unsere Story</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./about">Unsere Story</a>
           </div>
         </div>
         <div className="flex items-center gap-6">
@@ -42,21 +42,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 z-10">
             <span className="font-sans text-sm tracking-[0.2em] uppercase text-secondary mb-4 block">Est. 2025 — Lumyra Manufacture</span>
-            <AnimatePresence mode="wait">
-              {visible && (
-                <motion.div exit={{ opacity: 0 }}>
-                  <SplitText
-                    className="italic underline underline-offset-8 decoration-secondary text-lg md:text-2xl font-sans text-secondary mb-4"
-                    delay={50}
-                    animationFrom={{ opacity: 0, y: 40 }}
-                    animationTo={{ opacity: 1, y: 0 }}
-                    easing = "easeOut"
-                  >
-                    Hello, you!
-                  </SplitText>
-                </motion.div>
-              )}
-            </AnimatePresence>
+            
             <h1 className="text-5xl md:text-7xl font-serif text-on-surface leading-tight mb-8">Produkte für dein <span className="italic underline underline-offset-8 decoration-secondary" >Slow Living</span> Ritual.</h1>
             <p className="text-on-surface-variant max-w-md text-lg mb-10 leading-relaxed">Handgefertigte Trockenblumen-Arrangements, pflanzliche Kerzen, Tabletts und feine Düfte, kreiert, um deinem Zuhause eine organische Wärme zu verleihen.</p>
             <div className="flex gap-4">
@@ -151,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* Craftsmanship: The Atelier Philosophy */}
-      <section className="py-24 px-8 max-w-screen-2xl mx-auto">
+      <section className="pb-[200px] pt-24 px-8 max-w-screen-2xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1 relative">
             <div className="aspect-video rounded-2xl overflow-hidden">
@@ -181,24 +167,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="mb-24 px-8">
-        <div className="max-w-4xl mx-auto bg-surface-container rounded-[2rem] p-12 md:p-20 text-center relative overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-4xl font-serif mb-4">Join our Journal</h2>
-            <p className="text-on-surface-variant mb-10 max-w-md mx-auto">Subscribe for seasonal collection previews, interior styling tips, and artisanal stories.</p>
-            <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-              <input className="flex-grow bg-surface px-6 py-4 rounded-lg border-none focus:ring-2 focus:ring-primary/20 placeholder:text-on-surface-variant/40" placeholder="Your email address" type="email"/>
-              <button className="bg-primary text-on-primary px-10 py-4 rounded-lg font-medium hover:scale-[1.02] transition-transform">Subscribe</button>
-            </form>
-            <p className="text-[10px] text-on-surface-variant/60 mt-6 uppercase tracking-widest">Unsubscribe anytime. We respect your peace.</p>
-          </div>
-          {/* Abstract Organic Shape Background */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary-container/10 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
         </div>
       </section>
     </main>
