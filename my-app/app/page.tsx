@@ -17,10 +17,10 @@ export default function Home() {
         <div className="flex items-center gap-12">
           <a className="text-2xl font-serif italic text-[#565f4c] dark:text-[#848d78]" href="..">Lumyra Manufacture</a>
           <div className="hidden md:flex gap-8 items-center">
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Blumen</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Kerzen</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Düfte</a>
-            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="#">Deko</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./shop">Blumen</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./shop">Kerzen</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./shop">Düfte</a>
+            <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./shop">Deko</a>
             <a className="text-[#565f4c]/70 dark:text-[#848d78]/70 hover:text-[#565f4c] dark:hover:text-[#848d78] transition-colors duration-300" href="./about">Unsere Story</a>
           </div>
         </div>
