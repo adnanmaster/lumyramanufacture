@@ -33,31 +33,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html
-        lang="en"
-        className={cn(
-          "light",
-          notoSerif.variable,
-          plusJakartaSans.variable,
-          "font-sans",
-          geist.variable,
-        )}
-      >
-        <head>
-          {/* Material Symbols Outlined Icon Font */}
-          <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-            rel="stylesheet"
-          />
-        </head>
-        {/* We moved the body classes from your HTML snippet here */}
-        <body className="bg-surface text-on-surface font-sans selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+    <html
+      lang="en"
+      className={cn(
+        "light",
+        notoSerif.variable,
+        plusJakartaSans.variable,
+        "font-sans",
+        geist.variable,
+      )}
+    >
+      <head>
+        {/* Material Symbols Outlined Icon Font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      {/* We moved the body classes from your HTML snippet here */}
+      <body className="bg-surface text-on-surface font-sans selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+        <ClerkProvider>
           <Header />
           {children}
           <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

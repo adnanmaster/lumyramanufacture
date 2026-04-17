@@ -1,12 +1,8 @@
-
-
 import { SplitText } from "@/components/SplitText";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
 
-
 export default function Home() {
-
   return (
     <>
       <main className="pt-24 bg-surface text-on-surface font-sans selection:bg-secondary-container selection:text-on-secondary-container">
