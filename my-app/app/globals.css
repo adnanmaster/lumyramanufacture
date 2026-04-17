@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,5 +84,8 @@
   }
   html {
     @apply font-sans;
+  }
+  * {
+    @apply border-border ;
   }
 }
