@@ -4,7 +4,7 @@ export default function Shop() {
       <main className="pt-32 pb-20 px-8 max-w-screen-2xl mx-auto">
         <header className="mb-16">
           <h1 className="text-5xl md:text-6xl font-headline tracking-tight text-on-surface mb-4">
-            Haus der Handarbeit
+            Shop
           </h1>
           <p className="text-on-surface-variant max-w-2xl font-body leading-relaxed">
             A curated collection of objects for slow living. Each piece is
@@ -66,23 +66,7 @@ export default function Shop() {
               </ul>
             </div>
 
-            <div>
-              <h3 className="font-headline text-lg mb-6 text-on-surface">
-                Price Range
-              </h3>
-              <div className="space-y-6">
-                <input
-                  className="w-full h-1 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary"
-                  max="500"
-                  min="0"
-                  type="range"
-                />
-                <div className="flex justify-between items-center text-xs font-label text-on-surface-variant">
-                  <span>$0</span>
-                  <span>$500+</span>
-                </div>
-              </div>
-            </div>
+            
 
             <div>
               <h3 className="font-headline text-lg mb-6 text-on-surface">

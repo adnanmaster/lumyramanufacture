@@ -163,10 +163,20 @@ export const orderType = defineType({
       email: "email",
     },
     prepare(select) {
-      const orderIdSnippet = `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}`;
+      // 1. Sicherer Check: Gibt es eine Order ID? Wenn ja, slicen. Wenn nein, zeige "Neu" an.
+      const orderIdSnippet = select.orderId 
+        ? `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}` 
+        : "Neu";
+
+      // 2. Auch die anderen Werte absichern (falls das Dokument gerade erst erstellt wird)
+      const customerName = select.name || "Unbekannter Kunde";
+      const total = select.amount !== undefined ? select.amount : "0";
+      const curr = select.currency || "";
+      const mail = select.email || "Keine E-Mail";
+
       return {
-        title: `${select.name} (${orderIdSnippet})`,
-        subtitle: `${select.amount} ${select.currency}, ${select.email}`,
+        title: `${customerName} (${orderIdSnippet})`,
+        subtitle: `${total} ${curr} ${mail !== "Keine E-Mail" ? `- ${mail}` : ""}`,
         media: BasketIcon,
       };
     },
