@@ -146,7 +146,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                       </h3>
                     </div>
                     <span className="text-on-surface-variant font-body">
-                      ${product.price}
+                      {product.price} €
                     </span>
                   </div>
                 </div>
