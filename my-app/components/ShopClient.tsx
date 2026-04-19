@@ -1,50 +1,69 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
+import Link from "next/link";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
-// Wir definieren kurz, wie ein Produkt aussieht
 type Product = {
   _id: string;
   name: string;
   price: number;
   imageUrl: string;
+  secondImageUrl?: string;
   categoryName: string;
   slug: string;
 };
 
 export default function ShopClient({ products }: { products: Product[] }) {
-  // 1. Unsere States für die ausgewählten Filter und die Sortierung
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [sortMethod, setSortMethod] = useState<string>("newest");
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  // 2. Wir suchen alle einzigartigen Kategorien aus deinen Produkten zusammen
+  // Wir lesen IMMER direkt aus der URL. Kein flüchtiges useState mehr!
+  const selectedCategories = searchParams.getAll("category");
+  const sortMethod = searchParams.get("sort") || "newest";
+
   const uniqueCategories = Array.from(
     new Set(products.map((p) => p.categoryName).filter(Boolean))
   ) as string[];
 
-  // 3. Funktion, um eine Checkbox an- oder abzuwählen
-  const toggleCategory = (category: string) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category) // Wenn schon drin, dann rauswerfen
-        : [...prev, category] // Wenn nicht drin, dann hinzufügen
-    );
+  // Diese Funktion berechnet den perfekten Link für jede Checkbox
+  const createCategoryUrl = (category: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    const current = params.getAll("category");
+    
+    // Alte Kategorien kurz löschen
+    params.delete("category");
+
+    if (current.includes(category)) {
+      // Wenn schon angewählt, alle anderen wieder hinzufügen (Abwählen-Effekt)
+      current.filter((c) => c !== category).forEach((c) => params.append("category", c));
+    } else {
+      // Wenn neu, alle alten + die neue hinzufügen (Anwählen-Effekt)
+      [...current, category].forEach((c) => params.append("category", c));
+    }
+
+    return `${pathname}?${params.toString()}`;
   };
 
-  // 4. Hier wird gefiltert und sortiert!
+  // Für das Dropdown nutzen wir weiterhin den Standard-Weg
+  const handleSortChange = (newSort: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("sort", newSort);
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   const displayedProducts = useMemo(() => {
     let result = [...products];
 
-    // Filtern nach Kategorie (Wenn keine ausgewählt ist, zeige alle)
     if (selectedCategories.length > 0) {
       result = result.filter((p) => selectedCategories.includes(p.categoryName));
     }
 
-    // Sortieren nach Preis
     if (sortMethod === "price_asc") {
-      result.sort((a, b) => a.price - b.price); // Günstigste zuerst
+      result.sort((a, b) => a.price - b.price);
     } else if (sortMethod === "price_desc") {
-      result.sort((a, b) => b.price - a.price); // Teuerste zuerst
+      result.sort((a, b) => b.price - a.price);
     }
 
     return result;
@@ -63,6 +82,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
         </p>
       </header>
       <div className="flex flex-col md:flex-row gap-12">
+        
         {/* SIDEBAR */}
         <aside className="w-full md:w-64 flex-shrink-0 space-y-10">
           <div>
@@ -70,15 +90,20 @@ export default function ShopClient({ products }: { products: Product[] }) {
               Categories
             </h3>
             <ul className="space-y-4">
-              {/* Dynamische Checkboxen basierend auf deinen Sanity Daten */}
               {uniqueCategories.map((category) => (
                 <li key={category}>
-                  <label className="flex items-center gap-3 group cursor-pointer">
+                  {/* MAGIE: Der Container ist jetzt ein echter Link, ohne dass die Seite scrollt */}
+                  <Link
+                    href={createCategoryUrl(category)}
+                    scroll={false} 
+                    className="flex items-center gap-3 group cursor-pointer"
+                  >
                     <input
                       type="checkbox"
-                      className="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary/20 bg-surface-container cursor-pointer"
+                      // pointer-events-none ist extrem wichtig, damit der Link den Klick fängt und nicht die dumme Standard-Checkbox!
+                      className="w-4 h-4 rounded-sm border-outline-variant text-primary focus:ring-primary/20 bg-surface-container pointer-events-none"
                       checked={selectedCategories.includes(category)}
-                      onChange={() => toggleCategory(category)}
+                      readOnly
                     />
                     <span
                       className={`text-sm font-body transition-colors ${
@@ -89,7 +114,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                     >
                       {category}
                     </span>
-                  </label>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -101,7 +126,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
             </h3>
             <select
               value={sortMethod}
-              onChange={(e) => setSortMethod(e.target.value)}
+              onChange={(e) => handleSortChange(e.target.value)}
               className="w-full bg-surface-container border-none rounded-lg py-3 px-4 text-sm font-body focus:ring-1 focus:ring-primary/30 cursor-pointer"
             >
               <option value="newest">New Arrivals</option>
@@ -120,23 +145,31 @@ export default function ShopClient({ products }: { products: Product[] }) {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8">
               {displayedProducts.map((product) => (
-                <div key={product._id} className="group relative flex flex-col">
+                <Link
+                  href={`/product/${product.slug}`}
+                  key={product._id}
+                  className="group relative flex flex-col p-4 -mx-4 rounded-2xl hover:bg-[#565f4c]/5 dark:hover:bg-[#848d78]/10 transition-colors duration-500 cursor-pointer"
+                >
                   <div className="aspect-[4/5] overflow-hidden rounded-lg bg-surface-container-low mb-6 relative">
                     <img
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover"
                       src={
                         product.imageUrl ||
                         "https://via.placeholder.com/400x500?text=No+Image"
                       }
                     />
-                    <div className="absolute inset-0 bg-on-surface/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
-                      <button className="w-full py-3 bg-surface/90 backdrop-blur-sm text-on-surface text-sm font-label rounded-md opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        Quick View
-                      </button>
-                    </div>
+
+                    {product.secondImageUrl && (
+                      <img
+                        alt={`${product.name} Ansicht 2`}
+                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        src={product.secondImageUrl}
+                      />
+                    )}
                   </div>
-                  <div className="flex justify-between items-start">
+                  
+                  <div className="flex justify-between items-start px-2">
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.2em] text-secondary mb-1 font-label">
                         {product.categoryName || "Product"}
@@ -149,7 +182,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
                       {product.price} €
                     </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
