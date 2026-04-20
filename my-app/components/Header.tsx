@@ -5,8 +5,7 @@ import CustomProfileButton from "@/components/CustomProfileButton";
 import MobileMenu from "@/components/MobileMenu";
 
 const Header = async () => {
-  const user = await currentUser();
-  console.log(user);
+
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-[#fbf9f4]/80 dark:bg-[#1b1c19]/80 backdrop-blur-md">
